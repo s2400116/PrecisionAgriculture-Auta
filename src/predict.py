@@ -1,4 +1,3 @@
-
 import sys
 from ultralytics import YOLO
 
@@ -7,7 +6,7 @@ def predict(image_path, weights_path="best.pt"):
     model = YOLO(weights_path)
     
     # Perform inference
-    results = model(image_path)
+    results = model(image_path, imgsz=800)
     
     # Display bounding box output
     results[0].show()

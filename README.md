@@ -20,16 +20,56 @@ The model detects 3 primary agricultural anomalies across crop fields:
 
 ## 📊 Model Performance & Benchmark Results
 
-Trained on a dataset of **450 annotated images** with **1,099 instances** over 50 epochs using YOLOv8 Nano (`yolov8n.pt`).
+Trained on a dataset of **450 annotated images** with **1,099 instances** over **100 epochs** using **YOLOv8 Small (`yolov8s.pt`)** at **800 × 800** resolution.
 
-| Class | Images | Instances | Precision ($P$) | Recall ($R$) | $\text{mAP}_{50}$ |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **All Classes** | **450** | **1099** | **0.791** | **0.726** | **0.820** |
-| 🦠 Fungal Infection | 198 | 423 | 0.734 | 0.692 | 0.780 |
-| 🐛 Pest Damage | 107 | 161 | 0.815 | 0.737 | 0.830 |
-| 🍂 Leaf Anomaly | 214 | 515 | 0.824 | 0.748 | 0.840 |
+### ⚙️ Training Environment & Hyperparameters
 
-> **Inference Speed:** ~0.3ms preprocess, 2.4ms inference per frame on NVIDIA T4 GPU.
+| Parameter | Value |
+| :--- | :--- |
+| **Model Architecture** | YOLOv8s (`yolov8s.pt`) |
+| **Framework** | PyTorch `2.11.0+cu128` / Ultralytics `8.4.104` |
+| **Hardware** | NVIDIA Tesla T4 (15 GB VRAM) |
+| **Image Size (`imgsz`)** | 800 × 800 |
+| **Batch Size** | 16 |
+| **Optimizer** | AdamW (`lr0=0.001429`, `momentum=0.9`) |
+| **Epochs** | 100 |
+| **Training Time** | ~30.8 minutes (0.513 hrs) |
+| **Parameters** | 11,126,745 (11.1M) |
+| **GFLOPs** | 28.4 |
+
+---
+
+### 🏆 Validation Metrics (`best.pt`)
+
+* **Validation Images:** 450
+* **Total Instances:** 1,099
+
+| Metric | Score |
+| :--- | :--- |
+| **Precision ($P$)** | **85.8%** (`0.858`) |
+| **Recall ($R$)** | **85.1%** (`0.851`) |
+| **$\text{mAP}_{50}$** | **92.5%** (`0.925`) |
+| **$\text{mAP}_{50~95}$** | **60.1%** (`0.601`) |
+
+---
+
+### 🏷️ Per-Class Performance Breakdown
+
+| Class | Images | Instances | Precision ($P$) | Recall ($R$) | $\text{mAP}_{50}$ | $\text{mAP}_{50~95}$ |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **All Classes** | **450** | **1099** | **0.858** | **0.851** | **0.925** | **0.601** |
+| 🐛 Pest Damage | 107 | 161 | **0.911** | **0.895** | **0.963** | **0.640** |
+| 🍂 Leaf Anomaly | 214 | 515 | **0.832** | **0.843** | **0.913** | **0.596** |
+| 🦠 Fungal Infection | 198 | 423 | **0.831** | **0.813** | **0.901** | **0.568** |
+
+---
+
+### ⚡ Speed Benchmark (Tesla T4)
+
+* **Pre-process:** 0.4 ms
+* **Inference:** 7.4 ms
+* **Post-process:** 4.5 ms
+* **Total Latency:** ~12.3 ms (~81 FPS)
 
 ---
 
@@ -37,7 +77,7 @@ Trained on a dataset of **450 annotated images** with **1,099 instances** over 5
 
 Pre-trained model weights (`best.pt`) are available directly from the repository release page:
 
-📥 **[Download `best.pt` (Release v1.0.0)](https://github.com/s2400116/PrecisionAgriculture-Auta/releases/tag/v1.0.0)**
+📥 **[Download best.pt (Release v1.0.0)](https://github.com/s2400116/PrecisionAgriculture-Auta/releases/tag/v1.0.0)**
 
 ---
 
@@ -62,21 +102,21 @@ Pre-trained model weights (`best.pt`) are available directly from the repository
 ```text
 PrecisionAgriculture-Auta/
 │
-├── assets/                       # Performance graphs & detection previews
+├── assets/
 │   ├── confusion_matrix.png
 │   ├── results.png
 │   └── demo_preview.jpg
 │
-├── config/                       # Dataset configuration
+├── config/
 │   └── data.yaml
 │
-├── notebook/                     # Google Colab training notebook
+├── notebook/
 │   └── PrecisionAgriculture.ipynb
 │
-├── src/                          # Core scripts
-│   ├── predict.py                # Standalone inference script
-│   └── train.py                  # Model training setup script
+├── src/
+│   ├── predict.py
+│   └── train.py
 │
-├── .gitignore                    # Excludes heavy binaries & runtime files
-├── requirements.txt              # Dependency specifications
-└── README.md                     # Project documentation
+├── .gitignore
+├── requirements.txt
+└── README.md
