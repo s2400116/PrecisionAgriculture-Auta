@@ -20,20 +20,20 @@ The model detects 3 primary agricultural anomalies across crop fields:
 
 ## 📊 Model Performance & Benchmark Results
 
-Trained on a dataset of **450 annotated images** with **1,099 instances** over **100 epochs** using **YOLOv8 Small (`yolov8s.pt`)** at **800 × 800** resolution.
+Trained on a dataset of **600 annotated images** with **1,665 instances** over **100 epochs** using **YOLOv8 Small (`yolov8s.pt`)** at **800 × 800** resolution.
 
 ### ⚙️ Training Environment & Hyperparameters
 
 | Parameter | Value |
 | :--- | :--- |
 | **Model Architecture** | YOLOv8s (`yolov8s.pt`) |
-| **Framework** | PyTorch `2.11.0+cu128` / Ultralytics `8.4.104` |
+| **Framework** | PyTorch `2.11.0+cu128` / Ultralytics `8.4.105` |
 | **Hardware** | NVIDIA Tesla T4 (15 GB VRAM) |
 | **Image Size (`imgsz`)** | 800 × 800 |
 | **Batch Size** | 16 |
 | **Optimizer** | AdamW (`lr0=0.001429`, `momentum=0.9`) |
 | **Epochs** | 100 |
-| **Training Time** | ~30.8 minutes (0.513 hrs) |
+| **Training Time** | ~41.8 minutes (0.696 hrs) |
 | **Parameters** | 11,126,745 (11.1M) |
 | **GFLOPs** | 28.4 |
 
@@ -41,15 +41,15 @@ Trained on a dataset of **450 annotated images** with **1,099 instances** over *
 
 ### 🏆 Validation Metrics (`best.pt`)
 
-* **Validation Images:** 450
-* **Total Instances:** 1,099
+* **Validation Images:** 600
+* **Total Instances:** 1,665
 
 | Metric | Score |
 | :--- | :--- |
-| **Precision ($P$)** | **85.8%** (`0.858`) |
-| **Recall ($R$)** | **85.1%** (`0.851`) |
-| **$\text{mAP}_{50}$** | **92.5%** (`0.925`) |
-| **$\text{mAP}_{50~95}$** | **60.1%** (`0.601`) |
+| **Precision ($P$)** | **88.6%** (`0.886`) |
+| **Recall ($R$)** | **84.5%** (`0.845`) |
+| **$\text{mAP}_{50}$** | **92.1%** (`0.921`) |
+| **$\text{mAP}_{50~95}$** | **57.2%** (`0.572`) |
 
 ---
 
@@ -57,19 +57,19 @@ Trained on a dataset of **450 annotated images** with **1,099 instances** over *
 
 | Class | Images | Instances | Precision ($P$) | Recall ($R$) | $\text{mAP}_{50}$ | $\text{mAP}_{50~95}$ |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **All Classes** | **450** | **1099** | **0.858** | **0.851** | **0.925** | **0.601** |
-| 🐛 Pest Damage | 107 | 161 | **0.911** | **0.895** | **0.963** | **0.640** |
-| 🍂 Leaf Anomaly | 214 | 515 | **0.832** | **0.843** | **0.913** | **0.596** |
-| 🦠 Fungal Infection | 198 | 423 | **0.831** | **0.813** | **0.901** | **0.568** |
+| **All Classes** | **600** | **1665** | **0.886** | **0.845** | **0.921** | **0.572** |
+| 🐛 Pest Damage | 127 | 208 | **0.914** | **0.933** | **0.972** | **0.644** |
+| 🍂 Leaf Anomaly | 285 | 826 | **0.897** | **0.812** | **0.905** | **0.546** |
+| 🦠 Fungal Infection | 268 | 631 | **0.846** | **0.791** | **0.887** | **0.525** |
 
 ---
 
 ### ⚡ Speed Benchmark (Tesla T4)
 
-* **Pre-process:** 0.4 ms
-* **Inference:** 7.4 ms
-* **Post-process:** 4.5 ms
-* **Total Latency:** ~12.3 ms (~81 FPS)
+* **Pre-process:** 0.3 ms
+* **Inference:** 7.3 ms
+* **Post-process:** 3.0 ms
+* **Total Latency:** ~10.6 ms (~94 FPS)
 
 ---
 

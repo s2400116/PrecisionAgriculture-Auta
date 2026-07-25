@@ -1,20 +1,16 @@
-# Exclude Model Weights
 *.pt
 *.onnx
 *.tflite
 *.engine
 
-# Exclude Datasets & Archives
 dataset/
 runs/
 *.zip
 *.tar.gz
 
-# Exclude Python & Colab Cache
 __pycache__/
 .ipynb_checkpoints/
 *.py[cod]
 
-# OS Files
 .DS_Store
 Thumbs.db

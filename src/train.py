@@ -1,21 +1,12 @@
 import os
-import yaml
-import urllib.request
 from ultralytics import YOLO
 
 def train():
-    dataset_dir = "/content/dataset"
-    yaml_path = os.path.join(dataset_dir, "data.yaml")
-    weights_path = "yolov8s.pt"
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    yaml_path = os.path.join(base_dir, "config", "data.yaml")
 
-    # Pre-download base weights if missing
-    if not os.path.exists(weights_path):
-        print("⬇️ Downloading base model weights (yolov8s.pt)...")
-        url = "https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8s.pt"
-        urllib.request.urlretrieve(url, weights_path)
-
-    # Initialize and train
-    model = YOLO(weights_path)
+    model = YOLO("yolov8s.pt")
+    
     results = model.train(
         data=yaml_path,
         epochs=100,
@@ -29,7 +20,7 @@ def train():
         name="train_v2",
         exist_ok=True
     )
-    print("✅ Training complete!")
+    print("Training complete!")
 
 if __name__ == "__main__":
     train()

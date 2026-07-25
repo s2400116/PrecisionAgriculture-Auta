@@ -1,5 +1,5 @@
 ultralytics>=8.0.0
 pyyaml
-gradio
 opencv-python
 pillow
+gradio

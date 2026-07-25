@@ -1,7 +1,6 @@
+Train: Train.txt
 names:
   0: fungal_infection
   1: pest_damage
   2: leaf_anomaly
-path: /content/dataset
-train: train.txt
-val: train.txt
+path: .
