@@ -5,7 +5,7 @@ An end-to-end Computer Vision pipeline built with **YOLOv8** to identify, locali
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-blue.svg)](https://docs.ultralytics.com/)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.11-EE4C2C.svg?logo=pytorch&logoColor=white)](https://pytorch.org/)
-[![Release](https://img.shields.io/github/v/release/s2400116/PrecisionAgriculture-Auta?color=green)](https://github.com/s2400116/PrecisionAgriculture-Auta/releases/tag/v1.0.0)
+[![Release](https://img.shields.io/github/v/release/s2400116/PrecisionAgriculture-Auta?color=green)](https://github.com/s2400116/PrecisionAgriculture-Auta/releases/tag/v1.1.0)
 
 ---
 
