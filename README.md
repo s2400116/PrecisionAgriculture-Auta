@@ -77,7 +77,7 @@ Trained on a dataset of **600 annotated images** with **1,665 instances** over *
 
 Pre-trained model weights (`best.pt`) are available directly from the repository release page:
 
-📥 **[Download best.pt (Release v1.0.0)](https://github.com/s2400116/PrecisionAgriculture-Auta/releases/tag/v1.0.0)**
+📥 **[Download best.pt (Release v1.2.0)](https://github.com/s2400116/PrecisionAgriculture-Auta/releases/tag/v1.2.0)**
 
 ---
 
